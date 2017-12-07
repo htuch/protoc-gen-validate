@@ -3,6 +3,8 @@ syntax = "proto3";
 package tests.harness.cases;
 option go_package = "cases";
 
+import "tests/harness/cases/other_package/enum.proto";
+
 import "validate/validate.proto";
 
 enum TestEnum {
@@ -29,6 +31,10 @@ message EnumConst { TestEnum val = 1 [(validate.rules).enum.const = 2];}
 message EnumAliasConst { TestEnumAlias val = 1 [(validate.rules).enum.const = 2];}
 
 message EnumDefined { TestEnum val = 1 [(validate.rules).enum.defined_only = true];}
+message EnumCrossPackageDefined {
+  tests.harness.cases.other_package.TestEnum val = 1
+      [(validate.rules).enum.defined_only = true];
+}
 message EnumAliasDefined { TestEnumAlias val = 1 [(validate.rules).enum.defined_only = true];}
 
 message EnumIn      { TestEnum val = 1 [(validate.rules).enum = { in: [0, 2]}];}

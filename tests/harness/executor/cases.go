@@ -871,6 +871,8 @@ var enumCases = []TestCase{
 
 	{"enum - defined_only - valid", &cases.EnumDefined{0}, true},
 	{"enum - defined_only - invalid", &cases.EnumDefined{math.MaxInt32}, false},
+	{"enum - cross-package defined_only - valid", &cases.EnumCrossPackageDefined{0}, true},
+	{"enum - cross-package defined_only - invalid", &cases.EnumCrossPackageDefined{math.MaxInt32}, false},
 	{"enum alias - defined_only - valid", &cases.EnumAliasDefined{1}, true},
 	{"enum alias - defined_only - invalid", &cases.EnumAliasDefined{math.MaxInt32}, false},
 
